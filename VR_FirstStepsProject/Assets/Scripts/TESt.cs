@@ -5,9 +5,10 @@ using UnityEngine.XR.Content.Interaction;
 
 public class TESt : MonoBehaviour
 {
-
     float sliderValue;
      XRSlider xRSlider;
+    public GameObject cow;
+    public GameObject socket;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +20,11 @@ public class TESt : MonoBehaviour
     void Update()
     {
         
-        if (xRSlider.value == 1) {
-            print("VAlor positivo");
-        }else if(xRSlider.value == 0) {
-            print("VAlor negativo");
-        }
+        //if (xRSlider.value == 1) {
+        //    print("VAlor positivo");
+        //}else if(xRSlider.value == 0) {
+        //    print("VAlor negativo");
+        //}
     }
 
     public void MovX() {
@@ -40,5 +41,20 @@ public class TESt : MonoBehaviour
 
     public void ButtonPress() {
         print("button press");
+    }
+
+    public void CowSpawner()
+    {
+        Instantiate(cow, transform.position, Quaternion.identity);
+    }
+
+    public void LeverOn()
+    {
+        socket.SetActive(false);
+    }
+
+    public void LeverOff()
+    {
+        socket.SetActive(true);
     }
 }
