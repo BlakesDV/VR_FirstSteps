@@ -7,6 +7,8 @@ public class CannonsFunc : MonoBehaviour
 {
     public GameObject socket;
     public GameObject cannonball;
+    public Transform cannonPos;
+    public float cannonballSpeed = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,5 +20,18 @@ public class CannonsFunc : MonoBehaviour
     void Update()
     {
         
+    }
+    public void CannonBallSpawner() 
+    {
+        Instantiate(cannonball, cannonPos.position, Quaternion.identity);
+        cannonball.transform.Translate(Vector3.forward * cannonballSpeed * Time.deltaTime);
+
+        //script para lanzar la bola con chatgpt ref.
+        //Rigidbody cannonballRb = cannonball.GetComponent<Rigidbody>();
+
+        //if (cannonballRb != null) 
+        //{
+        //    cannonballRb.AddForce(cannonPos.forward * cannonballSpeed, ForceMode.Impulse);
+        //}
     }
 }
