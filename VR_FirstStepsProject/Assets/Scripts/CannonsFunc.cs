@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using UnityEngine.XR.Content.Interaction;
 
 public class CannonsFunc : MonoBehaviour
@@ -8,6 +9,7 @@ public class CannonsFunc : MonoBehaviour
     public GameObject socket;
     public GameObject cannonball;
     public Transform cannonPos;
+    public Rigidbody cannon;
     public float cannonballSpeed = 10f;
 
     // Start is called before the first frame update
@@ -33,5 +35,13 @@ public class CannonsFunc : MonoBehaviour
         //{
         //    cannonballRb.AddForce(cannonPos.forward * cannonballSpeed, ForceMode.Impulse);
         //}
+    }
+    public void Shoot() {
+
+        //socket.SetActive(false);
+        Instantiate(cannonball, cannonPos.position, Quaternion.identity);
+        cannon.AddForce(transform.forward * cannonballSpeed);
+
+
     }
 }
