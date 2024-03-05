@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Content.Interaction;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class TESt : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class TESt : MonoBehaviour
      XRSlider xRSlider;
     public GameObject cow;
     public GameObject socket;
+
+    public GameObject cannonball;
+    public Transform cannonPos;
+    public Rigidbody cannon;
+    public float cannonballSpeed = 10f;
+    XRSocketInteractor sx;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +40,15 @@ public class TESt : MonoBehaviour
 
     public void MovY() {
         print("Movimiento en Y");
+    }
+
+    public void TriggerEnter() {
+        print("value enter");
+        Instantiate(cannonball, cannonPos.position, Quaternion.identity);
+
+        IXRSelectInteractable x = sx.GetOldestInteractableSelected();
+        Destroy(x.transform.gameObject);
+
     }
 
     public void ValueChange() {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Content.Interaction;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CannonsFunc : MonoBehaviour
 {
@@ -11,11 +12,12 @@ public class CannonsFunc : MonoBehaviour
     public Transform cannonPos;
     public Rigidbody cannon;
     public float cannonballSpeed = 10f;
+    XRSocketInteractor sx;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //sx = GetComponent<XRSocketInteractor>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,16 @@ public class CannonsFunc : MonoBehaviour
     {
         
     }
+
+    //public void TriggerEnter() {
+    //    print("value enter");
+    //    Instantiate(cannonball, cannonPos.position, Quaternion.identity);
+
+    //    IXRSelectInteractable x = sx.GetOldestInteractableSelected();
+    //    Destroy(x.transform.gameObject);
+
+    //}
+
     public void CannonBallSpawner() 
     {
         Instantiate(cannonball, cannonPos.position, Quaternion.identity);
