@@ -28,4 +28,13 @@ public class Gun : MonoBehaviour
         tempBullet.GetComponent<Rigidbody>().velocity = bulletSpawner.forward * bulletSpeed;
         Destroy(tempBullet, 7);
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+            print("Enemy Dead");
+        }
+    }
 }
