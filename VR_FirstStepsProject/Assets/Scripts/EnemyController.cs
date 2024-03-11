@@ -6,33 +6,24 @@ public class EnemyController : MonoBehaviour
 {
 
     public GameObject ghostPrefab;
-    public Transform playerTransform;
-    public float spawnInterval = 50f;
+    public Transform SpawnTransform;
+    public float spawnInterval = 3f;
 
-    private float spawnTimer;
-
-    void Start()
-    {
-        spawnTimer = spawnInterval;
-    }
+    private float spawnTimer = 0;
 
     void Update()
     {
-        spawnTimer -= Time.deltaTime;
-        if (spawnTimer <= 0)
+
+        spawnTimer += Time.deltaTime;
+        if (spawnTimer >= spawnInterval)
         {
             SpawnGhost();
-            spawnTimer = spawnInterval;
+            spawnTimer = 0;
         }
     }
 
-    void SpawnGhost()
+    public void SpawnGhost()
     {
-        GameObject ghostInstance = Instantiate(ghostPrefab, transform.position, Quaternion.identity);
-        Enemy ghostController = ghostInstance.GetComponent<Enemy>();
-        if (ghostController != null && playerTransform != null)
-        {
-            ghostController.SetTarget(playerTransform);
-        }
+        Instantiate(ghostPrefab, transform.position, Quaternion.identity);
     }
 }

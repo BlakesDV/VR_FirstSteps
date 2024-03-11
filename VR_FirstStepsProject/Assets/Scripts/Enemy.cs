@@ -7,33 +7,17 @@ using static UnityEngine.GraphicsBuffer;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Transform player;
-    //[SerializeField] int health = 100;
+    [SerializeField] private Transform player;
 
     // Update is called once per frame
+
+    private void Start() {
+        player = GameObject.FindWithTag("Player").transform;
+        
+    }
     void Update()
     {
-        agent.SetDestination(player.position);
-    }
-    public void SetTarget(Transform newTarget)
-    {
-        player = newTarget;
+        agent.SetDestination(player.transform.position);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //Destroy(other.gameObject);
-            print("Dead");
-        }
-    }
-    //public void TakeDamage(int damage)
-    //{
-    //    health -= damage;
-    //    if (health <= 0)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
 }

@@ -29,12 +29,5 @@ public class Gun : MonoBehaviour
         Destroy(tempBullet, 7);
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(collision.gameObject);
-            print("Enemy Dead");
-        }
-    }
+  
 }
